@@ -1,10 +1,6 @@
 ## Finding Flix - Tinder for Movies
+
 ## Description
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
 Finding Flix is a web based application that allows users to build a match profile of shows & movies based off a genre of their selection.
 Users can input a genre and year of their choice, once inputted the user will be shown a card stack of potential matches, which they can swipe through to either "match" with or disregard. Once the user has swiped through all of their cards, their matches will be stored in a list displayed to them that will also display where the user can view the program.
 Finding Flix aims to simplify the process of finding your new favorite show or movie. With so many options to watch and a slew of streaming platforms to choose from, Finding Flix attempts to streamline & simplfy these choices for users.
