@@ -1,3 +1,4 @@
+
 'use strict';
 
 var tinderContainer = document.querySelector('.tinder');
@@ -95,3 +96,4 @@ var loveListener = createButtonListener(true);
 
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
+
