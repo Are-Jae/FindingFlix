@@ -5,6 +5,22 @@ var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
+var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var genreUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+
+//TWo dropdowns Comedy and 2012
+//ON submit form event-> htpp://apiwatchmode/ + geredropwdown + & + yeardropdwon + "apikey"
+
+function getAPI(){
+  fetch('https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ&')
+  .then(function (response){
+    return response.json()
+    
+  }).then(function(data){
+    console.log(data)
+  })
+}
+getAPI()
 
 function initCards(card, index) {
   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
