@@ -8,12 +8,31 @@ var love = document.getElementById('love');
 var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var submit = document.querySelector("#startbtn")
+// selection
 let action = document.querySelector(".action")
 let anime = document.querySelector(".anime")
 let comedy = document.querySelector(".comedy")
 let documentary = document.querySelector(".documentary")
 let scienceFiction = document.querySelector(".science-fiction")
 let horror = document.querySelector(".horror")
+
+
+
+// inputs
+let actionInput = document.querySelector(".actionMovies")
+let animeInput = document.querySelector(".animeMovies")
+let comedyInput = document.querySelector(".comedyMovies")
+let documentaryInput = document.querySelector(".documentaryMovies")
+let sciFiInput = document.querySelector(".sciFiMovies")
+
+let horrorInput = document.querySelector(".horrorMovies")
+let button = document.querySelector("#startbtn")
+console.log(actionInput)
+console.log(animeInput)
+console.log(comedyInput)
+console.log(documentaryInput)
+console.log(sciFiInput)
+console.log(horrorInput)
 // action.textContent="action"
 
 //TWo dropdowns Comedy and 2012
@@ -137,3 +156,21 @@ var loveListener = createButtonListener(true);
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
 
+button.addEventListener('click',(e) => {
+actionInput.setAttribute('checked') 
+animeInput.setAttribute('checked') 
+comedyInput.setAttribute('checked') 
+documentaryInput.setAttribute('checked') 
+sciFiInput.setAttribute('checked') 
+horrorInput.setAttribute('checked') 
+console.log(actionInput)
+console.log(animeInput)
+console.log(comedyInput)
+console.log(documentaryInput)
+console.log(sciFiInput)
+console.log(horrorInput)
+ 
+
+})
+// actionInput.setAttribute('checked',true) 
+console.log(actionInput)
