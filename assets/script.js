@@ -7,6 +7,14 @@ var nope = document.getElementById('nope');
 var love = document.getElementById('love');
 var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var submit = document.querySelector("#startbtn")
+let action = document.querySelector(".action")
+let anime = document.querySelector(".anime")
+let comedy = document.querySelector(".comedy")
+let documentary = document.querySelector(".documentary")
+let scienceFiction = document.querySelector(".science-fiction")
+let horror = document.querySelector(".horror")
+// action.textContent="action"
 
 //TWo dropdowns Comedy and 2012
 //ON submit form event-> htpp://apiwatchmode/ + geredropwdown + & + yeardropdwon + "apikey"
@@ -18,10 +26,26 @@ function getAPI(){
     
   }).then(function(data){
     console.log(data)
+    action.textContent=data[0].name
+    
+    anime.textContent=data[5].name
+    
+    comedy.textContent=data[7].name
+   
+    documentary.textContent=data[9].name
+    
+    scienceFiction.textContent=data[26].name
+    
+    horror.textContent=data[10].name
+    
   })
 }
 getAPI()
+// get options on toggle board-----------------v
+var genOptions = document.createElement("span")
 
+
+// --------------------------------------^
 function initCards(card, index) {
   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 
