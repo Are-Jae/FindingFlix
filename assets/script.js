@@ -1,5 +1,5 @@
 
-'use strict';
+// 'use strict';
 
 var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
@@ -8,6 +8,7 @@ var love = document.getElementById('love');
 var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var submit = document.querySelector("#startbtn")
+let genreForm = document.getElementById("genre-form")
 // selection
 let action = document.querySelector(".action")
 let anime = document.querySelector(".anime")
@@ -172,5 +173,18 @@ console.log(horrorInput)
  
 
 })
+function handleFormSubmit(event){
+  console.log(event.target)
+}
+// function to move from genre selection screen to cards screen 
+// function startSwipe() {
+//   document.querySelector("#genre-box").classList.add("hide")
+//   initCards()
+// }
+// submit.addEventListener("click",startSwipe);
+
+
+
+
 // actionInput.setAttribute('checked',true) 
 console.log(actionInput)
