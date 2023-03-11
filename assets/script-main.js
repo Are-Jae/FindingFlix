@@ -5,9 +5,8 @@ var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
-// var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
-var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
-var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
 var submit = document.querySelector("#startbtn")
 let genreForm = document.getElementById("genre-form")
 // selection
@@ -41,7 +40,7 @@ console.log(horrorInput)
 //ON submit form event-> htpp://apiwatchmode/ + geredropwdown + & + yeardropdwon + "apikey"
 
 function getAPI(){
-  fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y')
+  fetch('https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y')
   .then(function (response){
     return response.json()
     
@@ -67,19 +66,19 @@ var genOptions = document.createElement("span")
 
 
 // --------------------------------------^
-function initCards(card, index) {
-  var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+// function initCards(card, index) {
+//   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 
-  newCards.forEach(function (card, index) {
-    card.style.zIndex = allCards.length - index;
-    card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
-    card.style.opacity = (10 - index) / 10;
-  });
+//   newCards.forEach(function (card, index) {
+//     card.style.zIndex = allCards.length - index;
+//     card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
+//     card.style.opacity = (10 - index) / 10;
+//   });
   
-  tinderContainer.classList.add('loaded');
-}
+//   tinderContainer.classList.add('loaded');
+// }
 
-initCards();
+// initCards();
 
 allCards.forEach(function (el) {
   var hammertime = new Hammer(el);
@@ -146,34 +145,34 @@ function createButtonListener(love) {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
     }
 
-    initCards();
+    // initCards();
 
     event.preventDefault();
   };
 }
 
-var nopeListener = createButtonListener(false);
-var loveListener = createButtonListener(true);
+// var nopeListener = createButtonListener(false);
+// var loveListener = createButtonListener(true);
 
-nope.addEventListener('click', nopeListener);
-love.addEventListener('click', loveListener);
+// nope.addEventListener('click', nopeListener);
+// love.addEventListener('click', loveListener);
 
-// button.addEventListener('click',(e) => {
-// actionInput.setAttribute('checked') 
-// animeInput.setAttribute('checked') 
-// comedyInput.setAttribute('checked') 
-// documentaryInput.setAttribute('checked') 
-// sciFiInput.setAttribute('checked') 
-// horrorInput.setAttribute('checked') 
-// console.log(actionInput)
-// console.log(animeInput)
-// console.log(comedyInput)
-// console.log(documentaryInput)
-// console.log(sciFiInput)
-// console.log(horrorInput)
+button.addEventListener('click',(e) => {
+actionInput.setAttribute('checked') 
+animeInput.setAttribute('checked') 
+comedyInput.setAttribute('checked') 
+documentaryInput.setAttribute('checked') 
+sciFiInput.setAttribute('checked') 
+horrorInput.setAttribute('checked') 
+console.log(actionInput)
+console.log(animeInput)
+console.log(comedyInput)
+console.log(documentaryInput)
+console.log(sciFiInput)
+console.log(horrorInput)
  
 
-// })
+})
 function handleFormSubmit(event){
   console.log(event.target)
 }
