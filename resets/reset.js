@@ -20,21 +20,21 @@
 // </div>
 
 
-// <script>
+
 //   // Fetch API data
 //   fetch('http://www.omdbapi.com/?apikey=[7ae1f703]&')
 //     .then(response => response.json())
 //     .then(data => {
 //       // Update HTML elements with API data
-//       const cardTitle = document.querySelector('.card-title');
+//       const cardInfo = document.querySelector('.tinder--card);
 //       cardTitle.innerHTML = API Data: ${data.title};
 //       const cardText = document.querySelector('.card-text');
 //       cardText.innerHTML = API data: ${data.body};
 //     })
 //     .catch(error => console.error(error));
-// </script>
+
 
 
 //omdbi api key  7ae1f703
-
+//no json package 
 //need for loop to loop through cards? 
