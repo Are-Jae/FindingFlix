@@ -5,11 +5,31 @@
   }
   #genre-box{
     height: 100px;
-    width: 150px;
+    width: 153px;
+    margin: auto;
+    margin-top: 150px;
     font-family: Arial, Helvetica, sans-serif;
     display:flex;
-    background-color: #FFACE4;
+    background-color: #CCFBFE;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
   }
+
+  .about-us {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .about {
+    border-width: 2px;
+    border-color: black;
+    padding: 2px;
+    background-color: #CCFBFE;
+    border-radius: 5px;
+  }
+
   .button{
     background-color: blue;
     padding: 10px;
@@ -17,7 +37,11 @@
   }
   
   body {
-    background: #CCFBFE;
+    background-image: url("https://www.acoustimac.com/media/catalog/product/cache/317926ed174d27e56070feed61d0318a/6/0/6025657_4_2.jpg");
+    background-color: #CCCCCC;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 180%;
     overflow: hidden;
     font-family: sans-serif;
   }
@@ -152,3 +176,4 @@
   .fa-remove {
     color: #CDD6DD;
   }
+ 
