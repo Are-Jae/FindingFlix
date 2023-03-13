@@ -5,13 +5,10 @@ var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
-// var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
-var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
-var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
 var submit = document.querySelector("#startbtn")
 let genreForm = document.getElementById("genre-form")
-
-
 // selection
 let action = document.querySelector(".action")
 let anime = document.querySelector(".anime")
@@ -43,29 +40,12 @@ console.log(horrorInput)
 //ON submit form event-> htpp://apiwatchmode/ + geredropwdown + & + yeardropdwon + "apikey"
 
 function getAPI(){
-  fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y')
+  fetch('https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y')
   .then(function (response){
     return response.json()
     
   }).then(function(data){
     console.log(data)
-
-})
-// j
-}
-// function to get titles from selected genre
-
-function getTitles(){
-  fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=')
-  .then(function (response){
-    return response.json()
-    
-  }).then(function(data){
-    console.log(data)
-
-})
-}
-
     // action.textContent=data[0].name
     
     // anime.textContent=data[5].name
@@ -78,28 +58,55 @@ function getTitles(){
     
     // horror.textContent=data[10].name
     
-  // }
-  
+  })
+}
 getAPI()
 
+
+// function to get titles
+
+// function getTitles(){
+//     fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=1')
+//     .then(function (response){
+//       return response.json()
+      
+//     }).then(function(data){
+//       console.log(data)
+//     })
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // get options on toggle board-----------------v
-// var genOptions = document.createElement("span")
+var genOptions = document.createElement("span")
 
 
 // --------------------------------------^
-function initCards(card, index) {
-  var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+// function initCards(card, index) {
+//   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 
-  newCards.forEach(function (card, index) {
-    card.style.zIndex = allCards.length - index;
-    card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
-    card.style.opacity = (10 - index) / 10;
-  });
+//   newCards.forEach(function (card, index) {
+//     card.style.zIndex = allCards.length - index;
+//     card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
+//     card.style.opacity = (10 - index) / 10;
+//   });
   
-  tinderContainer.classList.add('loaded');
-}
+//   tinderContainer.classList.add('loaded');
+// }
 
-initCards();
+// initCards();
 
 allCards.forEach(function (el) {
   var hammertime = new Hammer(el);
@@ -166,17 +173,17 @@ function createButtonListener(love) {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
     }
 
-    initCards();
+    // initCards();
 
     event.preventDefault();
   };
 }
 
-var nopeListener = createButtonListener(false);
-var loveListener = createButtonListener(true);
+// var nopeListener = createButtonListener(false);
+// var loveListener = createButtonListener(true);
 
-nope.addEventListener('click', nopeListener);
-love.addEventListener('click', loveListener);
+// nope.addEventListener('click', nopeListener);
+// love.addEventListener('click', loveListener);
 
 // button.addEventListener('click',(e) => {
 // actionInput.setAttribute('checked') 
@@ -198,6 +205,23 @@ function handleFormSubmit(event){
   console.log(event.target)
 }
 
+// eventlistener for button on selected genre
+// button.addEventListener('click',(e)=> {
+//     e.preventDefault()
+//     let option = document.querySelector('#genres')
+//     let genreVal = option.value
+//     console.log(genreVal)
+// })
+
+
+
+
+// function to move from genre selection screen to cards screen 
+// function startSwipe() {
+//   document.querySelector("#genre-box").classList.add("hide")
+//   initCards()
+// }
+// submit.addEventListener("click",startSwipe);
 
 
 
