@@ -1,3 +1,4 @@
+<!-- this file is just for form on home screen -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,42 +19,27 @@
 </head>
 
 <body>
-    
-
-            <!-- new dropdown menu form -->
-<div id="genre-box">
-            <form action="cards.html" id="genre-form" onsubmit="handleFormSubmit()">
-                <label for="genres">Choose a genre:</label>
-                
-                <select id="genres" name="genres">
-                  <option class="actionMovies action" id="action" value="1">action</option>
-                  <option class="animeMovies anime" value="33">anime</option>
-                  <option class="comedyMovies comedy" value="4">comedy</option>
-                  <option class="documentaryMovies documentary"value="6">documentary</option>
-                  <option class="sciFiMovies science-fiction"value="15">sci-fi</option>
-                  <option class="horrorMovies horror"value="11">horror</option>
-                </select>
-                <input id="startbtn" type="submit" value="Submit">
-                </form>
-            </div>
 
 
+    <!-- dropdown menu form -->
+    <div id="genre-box">
+        <form action="cards.html" id="genre-form" onsubmit="handleFormSubmit()">
+            <label for="genres">Choose a genre:</label>
 
+            <select id="genres" name="genres">
+                <option class="actionMovies action" value="1">action</option>
+                <option class="animeMovies anime" value="33">anime</option>
+                <option class="comedyMovies comedy" value="4">comedy</option>
+                <option class="documentaryMovies documentary" value="6">documentary</option>
+                <option class="sciFiMovies science-fiction" value="15">sci-fi</option>
+                <option class="horrorMovies horror" value="11">horror</option>
+            </select>
+            <input type="submit" id="startbtn" value="submit">
 
-
-
-
-
-
-
-
-
-
-               
-        </div>
+        </form>
     </div>
-
 
     <script src="./assets/script-main.js"></script>
 </body>
+
 </html>

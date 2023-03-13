@@ -1,5 +1,5 @@
 
-// 'use strict';
+'use strict';
 
 var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
@@ -10,6 +10,8 @@ var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
 var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var submit = document.querySelector("#startbtn")
 let genreForm = document.getElementById("genre-form")
+
+
 // selection
 let action = document.querySelector(".action")
 let anime = document.querySelector(".anime")
@@ -47,6 +49,23 @@ function getAPI(){
     
   }).then(function(data){
     console.log(data)
+
+})
+// j
+}
+// function to get titles from selected genre
+
+function getTitles(){
+  fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=')
+  .then(function (response){
+    return response.json()
+    
+  }).then(function(data){
+    console.log(data)
+
+})
+}
+
     // action.textContent=data[0].name
     
     // anime.textContent=data[5].name
@@ -59,11 +78,12 @@ function getAPI(){
     
     // horror.textContent=data[10].name
     
-  })
-}
+  // }
+  
 getAPI()
+
 // get options on toggle board-----------------v
-var genOptions = document.createElement("span")
+// var genOptions = document.createElement("span")
 
 
 // --------------------------------------^
@@ -177,12 +197,7 @@ love.addEventListener('click', loveListener);
 function handleFormSubmit(event){
   console.log(event.target)
 }
-// function to move from genre selection screen to cards screen 
-// function startSwipe() {
-//   document.querySelector("#genre-box").classList.add("hide")
-//   initCards()
-// }
-// submit.addEventListener("click",startSwipe);
+
 
 
 

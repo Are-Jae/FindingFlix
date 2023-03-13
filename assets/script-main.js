@@ -1,5 +1,5 @@
 
-// 'use strict';
+'use strict';
 
 var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
@@ -61,6 +61,34 @@ function getAPI(){
   })
 }
 getAPI()
+
+
+// function to get titles
+
+// function getTitles(){
+//     fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=1')
+//     .then(function (response){
+//       return response.json()
+      
+//     }).then(function(data){
+//       console.log(data)
+//     })
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // get options on toggle board-----------------v
 var genOptions = document.createElement("span")
 
@@ -157,25 +185,37 @@ function createButtonListener(love) {
 // nope.addEventListener('click', nopeListener);
 // love.addEventListener('click', loveListener);
 
-button.addEventListener('click',(e) => {
-actionInput.setAttribute('checked') 
-animeInput.setAttribute('checked') 
-comedyInput.setAttribute('checked') 
-documentaryInput.setAttribute('checked') 
-sciFiInput.setAttribute('checked') 
-horrorInput.setAttribute('checked') 
-console.log(actionInput)
-console.log(animeInput)
-console.log(comedyInput)
-console.log(documentaryInput)
-console.log(sciFiInput)
-console.log(horrorInput)
+// button.addEventListener('click',(e) => {
+// actionInput.setAttribute('checked') 
+// animeInput.setAttribute('checked') 
+// comedyInput.setAttribute('checked') 
+// documentaryInput.setAttribute('checked') 
+// sciFiInput.setAttribute('checked') 
+// horrorInput.setAttribute('checked') 
+// console.log(actionInput)
+// console.log(animeInput)
+// console.log(comedyInput)
+// console.log(documentaryInput)
+// console.log(sciFiInput)
+// console.log(horrorInput)
  
 
-})
+// })
 function handleFormSubmit(event){
   console.log(event.target)
 }
+
+// eventlistener for button on selected genre
+// button.addEventListener('click',(e)=> {
+//     e.preventDefault()
+//     let option = document.querySelector('#genres')
+//     let genreVal = option.value
+//     console.log(genreVal)
+// })
+
+
+
+
 // function to move from genre selection screen to cards screen 
 // function startSwipe() {
 //   document.querySelector("#genre-box").classList.add("hide")
