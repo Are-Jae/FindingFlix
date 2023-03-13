@@ -37,11 +37,11 @@
   }
   
   body {
+    background-color: black;
     background-image: url("https://www.acoustimac.com/media/catalog/product/cache/317926ed174d27e56070feed61d0318a/6/0/6025657_4_2.jpg");
-    background-color: #CCCCCC;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 180%;
+    background-position-x: center;
+    background-size: cover;
     overflow: hidden;
     font-family: sans-serif;
   }
