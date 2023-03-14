@@ -26,7 +26,7 @@ body {
   .about-section {
     padding: 50px;
     text-align: center;
-    background-color: #CCFBFE;
+    background-color: #2963c2;
     color: black;
   }
   
@@ -49,7 +49,7 @@ body {
     outline: 0;
     display: inline-block;
     padding: 8px;
-    color: white;
+    color: black;
     background-color: #000;
     text-align: center;
     cursor: pointer;
@@ -60,6 +60,23 @@ body {
     background-color: #555;
   }
   
+  .homeLink{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .homeLink>a{
+    text-decoration: none;
+    color: whitesmoke;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: gray;
+  }
+  .homeLink>a:hover{
+    color: black;
+    background-color: white;
+  }
   @media screen and (max-width: 650px) {
     .column {
       width: 100%;

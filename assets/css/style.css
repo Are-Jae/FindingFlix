@@ -5,7 +5,8 @@
   }
   
   body {
-    background: #CCFBFE;
+    background-image: url("curtains1.jpg");
+    background-size: cover;
     overflow: hidden;
     font-family: sans-serif;
   }
@@ -140,4 +141,7 @@
   .fa-remove {
     color: #CDD6DD;
   }
- 
+
+  a{
+    color: white;
+  }
