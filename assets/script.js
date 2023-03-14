@@ -14,6 +14,7 @@ var genreBox = document.getElementById("genre-box")
 var swipeCards = document.querySelector('.swipe')
 var select = document.getElementById("genres")
 let movies = []
+var lovedList = document.querySelector('lovedList')
 
 var action = document.querySelector(".action")
 var anime = document.querySelector(".anime")
@@ -26,17 +27,21 @@ var drama = document.querySelector(".drama")
 var western = document.querySelector(".western")
 var adventure = document.querySelector(".adventure")
 var musical = document.querySelector(".musical")
+var genre = document.getElementById("genre_title").value;
+var yes = document.getElementById("yes")
+var no = document.getElementById("no")
+var na = document.getElementById("na")
 
-var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=1'
-var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=33'
-var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=4'
-var documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=6'
-var sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=15'
-var horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=11'
-var thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=17'
-var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=7'
-var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=19'
-var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=2'
+// var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=1'
+// var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=33'
+// var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=4'
+// var documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=6'
+// var sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=15'
+// var horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=11'
+// var thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=17'
+// var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=7'
+// var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=19'
+// var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=2'
 
 var actionInput = document.querySelector(".actionMovies")
 var animeInput = document.querySelector(".animeMovies")
@@ -51,46 +56,42 @@ var adventureInput = document.querySelector(".adventureMovies")
 var musicalInput = document.querySelector(".musicalMovies")
 
 var button = document.querySelector("#startbtn")
-console.log(actionInput)
-console.log(animeInput)
-console.log(comedyInput)
-console.log(documentaryInput)
-console.log(sciFiInput)
-console.log(horrorInput)
-console.log(thrillerInput)
-console.log(dramaInput)
-console.log(westernInput)
-console.log(adventureInput)
-console.log(musicalInput)
 
+// func to change background
+// function changeBackground() {
+//   if (select.option.value)
+// }
+
+// function gives platform of given title 
 function getStreaming(title, titleId) {
   fetch(`https://api.watchmode.com/v1/title/${titleId}/sources/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf`)
-  .then(function(response) {
-    return response.json()
-  })
-  .then(function(data) {
-    console.log(data)
-    const card = document.createElement('div')
-        card.classList.add('tinder--card')
-        const movieImage = document.createElement('img')
-        movieImage.setAttribute('src','./assets/img/finding-flix.png')
-        const h3 = document.createElement('h3')
-        h3.textContent= title
-        const sub= document.createElement('p')
-        sub.textContent = 'Available on: '
-        data.forEach(function(item){
-          let p = document.createElement('p')
-          p.textContent= item.name
-          sub.appendChild(p)
-        })
-
-        card.appendChild(movieImage)
-        card.appendChild(h3)
-        card.appendChild(sub)
-        allCards.appendChild(card)
-  })
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      console.log(data)
+      // create cards and placement for info.
+      const card = document.createElement('div')
+      card.classList.add('tinder--card')
+      const movieImage = document.createElement('img')
+      movieImage.setAttribute('src', './assets/img/finding-flix.png')
+      const h3 = document.createElement('h3')
+      h3.textContent = title
+      const sub = document.createElement('p')
+      sub.textContent = 'Available on: '
+      data.forEach(function (item) {
+        let p = document.createElement('p')
+        p.textContent = item.name
+        sub.appendChild(p)
+      })
+// attach items to cards
+      card.appendChild(movieImage)
+      card.appendChild(h3)
+      card.appendChild(sub)
+      allCards.appendChild(card)
+    })
 }
-
+// function gives list of titles based on genre selected 
 function getAPI(data) {
   fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=${data}&limit=5`)
     .then(function (response) {
@@ -98,8 +99,8 @@ function getAPI(data) {
 
     }).then(function (data) {
       console.log(data)
-      data.titles.forEach(function(title){
-          getStreaming(title.title, title.id)
+      data.titles.forEach(function (title) {
+        getStreaming(title.title, title.id)
       })
       console.log(data.titles[1].title)
       console.log(data.titles)
@@ -118,7 +119,7 @@ function initCards(card, index) {
   });
 }
 
-  tinderContainer.classList.add('loaded');
+tinderContainer.classList.add('loaded');
 
 cardDivs.forEach(function (el) {
   var hammertime = new Hammer(el);
@@ -197,33 +198,91 @@ var loveListener = createButtonListener(true);
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
 
-function togglehide(){
-  if(swipeCards.style.display==="none"){
+function togglehide() {
+  if (swipeCards.style.display === "none") {
     swipeCards.style.display = "block"
-  
+
   }
-  
- console.log("is this working?")
+
+
 };
 
 function handleFormSubmit(event) {
-console.log('is this working?')
+
 }
 
-localStorage.setItem('love',love)
+// function to get 'loved' items
+function saveLoved() {
+  let val = document.querySelector('input').value
+
+  let loves = JSON.parse(localStorage.getItem('')) || [];
+
+  loves.push(val)
+  localStorage.setItem('val', JSON.stringify((loves)))
+}
+// saveLoved()
+
+localStorage.setItem('love', love)
 console.log(localStorage.getItem('love'))
 
-genreForm.addEventListener('submit',function(event){
- event.preventDefault()
+// function to display localstorage
+// function seeLovedMovies(val) {
+//   var heartBlock = document.getElementById("lovedList")
+//   heartBlock.textContent=loves
+// lovedList.append(heartBlock);
+// console.log(seeLovedMovies)
+// }
+// document.getElementById('userIn').onclick = function(){
+//   var answers = document.getElementsByName('answer')
+//   for (var answer of answers)
+//   {
+//     if(answers.checked){
+//       alert(answer.value)
+//     }
+//   }
+// }
+function myFunction(event){
+  event.preventDefault
+ let testing = document.querySelector('input[name="answer"]:checked').value;
+ console.log(testing)
+ localStorage.setItem('selection', testing)
+//  alert(testing)
  
+  // var genre = document.getElementById("genre_title").value;
+  // var yes = document.getElementById("yesAnswer").value;
+  // var no = document.getElementById("noAnswer").value;
+  // var na = document.getElementById("naAnswer").value;
+  // var answers = document.getElementsByName('answer')
+  // for (i=0;i<answers.length;i++){
+  //   if (answers[i].checked){
+  //     let result = answers[i]
+  //     console.log(answers)
+  //   }
+    
+  
+  // }
+  // console.log(answers)
+  // var userForm = document.getElementById('user')
+  // console.log(userForm.value)
+//   // localStorage.setItem('Your fav genre?',' '); 
+ }
+// get the info 
+localStorage.setItem('Your fav genre?',' ');
+localStorage.setItem('New here?','yes');
+localStorage.setItem('New here?','no');
+localStorage.setItem('New here?','na');
+
+genreForm.addEventListener('submit', function (event) {
+  event.preventDefault()
+
   console.log(genres.value)
   let genre = genres.value
   getAPI(genre)
-  console.log('is this working?') 
   togglehide();
 }
 
 );
 console.log(genreForm)
+saveLoved()
 
 
