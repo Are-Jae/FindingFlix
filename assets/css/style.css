@@ -3,11 +3,11 @@
     padding: 0;
     margin: 0;
   }
+  
   #genre-box{
     height: 100px;
     width: 153px;
     margin: auto;
-    margin-top: 150px;
     font-family: Arial, Helvetica, sans-serif;
     display:flex;
     background-color: #CCFBFE;
@@ -97,7 +97,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     z-index: 1;
   }
   
@@ -107,7 +107,6 @@
     max-width: 400px;
     height: 70vh;
     background: #FFFFFF;
-    padding-bottom: 40px;
     border-radius: 8px;
     overflow: hidden;
     position: absolute;
@@ -128,6 +127,7 @@
   .tinder--card img {
     max-width: 100%;
     pointer-events: none;
+    background-color: black;
   }
   
   .tinder--card h3 {
