@@ -6,8 +6,8 @@ var allCards = document.querySelector('.tinder--cards');
 var cardDivs = document.querySelectorAll('.tinder--cards');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
-var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
-var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
+var apiKey = 'APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf'
+var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf'
 var submit = document.querySelector("#startbtn")
 var genreForm = document.getElementById("genre-form")
 var genreBox = document.getElementById("genre-box")
@@ -27,16 +27,16 @@ var western = document.querySelector(".western")
 var adventure = document.querySelector(".adventure")
 var musical = document.querySelector(".musical")
 
-var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=1'
-var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=33'
-var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=4'
-var documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=6'
-var sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=15'
-var horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=11'
-var thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=17'
-var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=7'
-var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=19'
-var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=2'
+var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=1'
+var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=33'
+var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=4'
+var documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=6'
+var sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=15'
+var horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=11'
+var thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=17'
+var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=7'
+var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=19'
+var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=2'
 
 var actionInput = document.querySelector(".actionMovies")
 var animeInput = document.querySelector(".animeMovies")
@@ -64,7 +64,7 @@ console.log(adventureInput)
 console.log(musicalInput)
 
 function getStreaming(title, titleId) {
-  fetch(`https://api.watchmode.com/v1/title/${titleId}/sources/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y`)
+  fetch(`https://api.watchmode.com/v1/title/${titleId}/sources/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf`)
   .then(function(response) {
     return response.json()
   })
@@ -92,7 +92,7 @@ function getStreaming(title, titleId) {
 }
 
 function getAPI(data) {
-  fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=${data}&limit=5`)
+  fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=${data}&limit=5`)
     .then(function (response) {
       return response.json()
 
