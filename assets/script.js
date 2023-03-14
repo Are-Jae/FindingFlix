@@ -15,7 +15,6 @@ var swipeCards = document.querySelector('.swipe')
 var select = document.getElementById("genres")
 let movies = []
 
-// selection
 var action = document.querySelector(".action")
 var anime = document.querySelector(".anime")
 var comedy = document.querySelector(".comedy")
@@ -28,7 +27,6 @@ var western = document.querySelector(".western")
 var adventure = document.querySelector(".adventure")
 var musical = document.querySelector(".musical")
 
-// API title by genre links
 var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=1'
 var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=33'
 var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=4'
@@ -40,10 +38,6 @@ var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ84
 var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=19'
 var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=2'
 
-
-
-
-// inputs
 var actionInput = document.querySelector(".actionMovies")
 var animeInput = document.querySelector(".animeMovies")
 var comedyInput = document.querySelector(".comedyMovies")
@@ -56,7 +50,6 @@ var westernInput = document.querySelector(".westernMovies")
 var adventureInput = document.querySelector(".adventureMovies")
 var musicalInput = document.querySelector(".musicalMovies")
 
-// submit button
 var button = document.querySelector("#startbtn")
 console.log(actionInput)
 console.log(animeInput)
@@ -70,11 +63,6 @@ console.log(westernInput)
 console.log(adventureInput)
 console.log(musicalInput)
 
-
-
-
-
-
 function getStreaming(title, titleId) {
   fetch(`https://api.watchmode.com/v1/title/${titleId}/sources/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y`)
   .then(function(response) {
@@ -85,7 +73,7 @@ function getStreaming(title, titleId) {
     const card = document.createElement('div')
         card.classList.add('tinder--card')
         const movieImage = document.createElement('img')
-        movieImage.setAttribute('src','./assets/img/team-7-action.webp')
+        movieImage.setAttribute('src','./assets/img/finding-flix.png')
         const h3 = document.createElement('h3')
         h3.textContent= title
         const sub= document.createElement('p')
@@ -102,7 +90,7 @@ function getStreaming(title, titleId) {
         allCards.appendChild(card)
   })
 }
-// gives list of all movies and genres
+
 function getAPI(data) {
   fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=${data}&limit=5`)
     .then(function (response) {
@@ -113,18 +101,11 @@ function getAPI(data) {
       data.titles.forEach(function(title){
           getStreaming(title.title, title.id)
       })
-
-     // initCards();
       console.log(data.titles[1].title)
       console.log(data.titles)
     })
 
 }
-
-
-
-
-
 
 function initCards(card, index) {
 
@@ -138,9 +119,6 @@ function initCards(card, index) {
 }
 
   tinderContainer.classList.add('loaded');
-
-
-
 
 cardDivs.forEach(function (el) {
   var hammertime = new Hammer(el);
@@ -219,12 +197,6 @@ var loveListener = createButtonListener(true);
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
 
-
-
-
-
-
-// hide function
 function togglehide(){
   if(swipeCards.style.display==="none"){
     swipeCards.style.display = "block"
@@ -234,24 +206,13 @@ function togglehide(){
  console.log("is this working?")
 };
 
-
-
-
-
-
-// moves from form to page with cards
 function handleFormSubmit(event) {
-
 console.log('is this working?')
-  // window.location.href='./cards.html'
-  
 }
 
-// setup local storage for 'loved' movies
 localStorage.setItem('love',love)
 console.log(localStorage.getItem('love'))
 
-// document.getElementById('genre-form').addEventListener('submit',handleFormSubmit)
 genreForm.addEventListener('submit',function(event){
  event.preventDefault()
  
