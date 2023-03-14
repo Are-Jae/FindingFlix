@@ -4,8 +4,44 @@
     margin: 0;
   }
   
+  #genre-box{
+    height: 100px;
+    width: 153px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    display:flex;
+    background-color: #CCFBFE;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+  }
+
+  .about-us {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .about {
+    border-width: 2px;
+    border-color: black;
+    padding: 2px;
+    background-color: #CCFBFE;
+    border-radius: 5px;
+  }
+
+  .button{
+    background-color: blue;
+    padding: 10px;
+    padding-right: 20px;
+  }
+  
   body {
     background-image: url("curtains1.jpg");
+    background-color: black;
+    background-image: url("https://www.acoustimac.com/media/catalog/product/cache/317926ed174d27e56070feed61d0318a/6/0/6025657_4_2.jpg");
+    background-repeat: no-repeat;
+    background-position-x: center;
     background-size: cover;
     overflow: hidden;
     font-family: sans-serif;
@@ -62,7 +98,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     z-index: 1;
   }
   
@@ -72,7 +108,6 @@
     max-width: 400px;
     height: 70vh;
     background: #FFFFFF;
-    padding-bottom: 40px;
     border-radius: 8px;
     overflow: hidden;
     position: absolute;
@@ -93,6 +128,7 @@
   .tinder--card img {
     max-width: 100%;
     pointer-events: none;
+    background-color: black;
   }
   
   .tinder--card h3 {
