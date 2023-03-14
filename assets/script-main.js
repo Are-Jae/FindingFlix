@@ -5,10 +5,11 @@ var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
-var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
 var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
 var submit = document.querySelector("#startbtn")
 let genreForm = document.getElementById("genre-form")
+
 // selection
 let action = document.querySelector(".action")
 let anime = document.querySelector(".anime")
@@ -16,7 +17,25 @@ let comedy = document.querySelector(".comedy")
 let documentary = document.querySelector(".documentary")
 let scienceFiction = document.querySelector(".science-fiction")
 let horror = document.querySelector(".horror")
+let thriller = document.querySelector(".thriller")
+let drama = document.querySelector(".drama")
+let western = document.querySelector(".western")
+let adventure = document.querySelector(".adventure")
+let musical = document.querySelector(".musical")
 
+// API genre links
+let actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=1'
+let animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=33'
+let comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=4'
+let documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=6'
+let sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=15'
+let horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=11'
+let thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=17'
+let dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=7'
+let westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=19'
+let adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=2'
+
+console.log(adventureOption)
 
 
 // inputs
@@ -25,8 +44,14 @@ let animeInput = document.querySelector(".animeMovies")
 let comedyInput = document.querySelector(".comedyMovies")
 let documentaryInput = document.querySelector(".documentaryMovies")
 let sciFiInput = document.querySelector(".sciFiMovies")
-
 let horrorInput = document.querySelector(".horrorMovies")
+let thrillerInput = document.querySelector(".thrillerMovies")
+let dramaInput = document.querySelector(".dramaMovies")
+let westernInput = document.querySelector(".westernMovies")
+let adventureInput = document.querySelector(".adventureMovies")
+let musicalInput = document.querySelector(".musicalMovies")
+
+// submit button
 let button = document.querySelector("#startbtn")
 console.log(actionInput)
 console.log(animeInput)
@@ -74,6 +99,8 @@ getAPI()
 //       console.log(data)
 //     })
 // }
+
+
 
 
 
@@ -201,9 +228,9 @@ function createButtonListener(love) {
  
 
 // })
-function handleFormSubmit(event){
-  console.log(event.target)
-}
+// function handleFormSubmit(event){
+//   console.log(event.target)
+// }
 
 // eventlistener for button on selected genre
 // button.addEventListener('click',(e)=> {

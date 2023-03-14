@@ -2,106 +2,147 @@
 'use strict';
 
 var tinderContainer = document.querySelector('.tinder');
-var allCards = document.querySelectorAll('.tinder--card');
+var allCards = document.querySelector('.tinder--cards');
+var cardDivs = document.querySelectorAll('.tinder--cards');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
-// var apiKey = 'O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
 var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
-var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=O2IeCrBTwGCVueYuTzgKLqqZgVlyqwbqTTTrZxTQ'
+var requestUrl = 'https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
 var submit = document.querySelector("#startbtn")
-let genreForm = document.getElementById("genre-form")
-
+var genreForm = document.getElementById("genre-form")
+var genreBox = document.getElementById("genre-box")
+var swipeCards = document.querySelector('.swipe')
+var select = document.getElementById("genres")
+let movies = []
 
 // selection
-let action = document.querySelector(".action")
-let anime = document.querySelector(".anime")
-let comedy = document.querySelector(".comedy")
-let documentary = document.querySelector(".documentary")
-let scienceFiction = document.querySelector(".science-fiction")
-let horror = document.querySelector(".horror")
+var action = document.querySelector(".action")
+var anime = document.querySelector(".anime")
+var comedy = document.querySelector(".comedy")
+var documentary = document.querySelector(".documentary")
+var scienceFiction = document.querySelector(".science-fiction")
+var horror = document.querySelector(".horror")
+var thriller = document.querySelector(".thriller")
+var drama = document.querySelector(".drama")
+var western = document.querySelector(".western")
+var adventure = document.querySelector(".adventure")
+var musical = document.querySelector(".musical")
+
+// API title by genre links
+var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=1'
+var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=33'
+var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=4'
+var documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=6'
+var sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=15'
+var horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=11'
+var thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=17'
+var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=7'
+var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=19'
+var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=2'
+
 
 
 
 // inputs
-let actionInput = document.querySelector(".actionMovies")
-let animeInput = document.querySelector(".animeMovies")
-let comedyInput = document.querySelector(".comedyMovies")
-let documentaryInput = document.querySelector(".documentaryMovies")
-let sciFiInput = document.querySelector(".sciFiMovies")
+var actionInput = document.querySelector(".actionMovies")
+var animeInput = document.querySelector(".animeMovies")
+var comedyInput = document.querySelector(".comedyMovies")
+var documentaryInput = document.querySelector(".documentaryMovies")
+var sciFiInput = document.querySelector(".sciFiMovies")
+var horrorInput = document.querySelector(".horrorMovies")
+var thrillerInput = document.querySelector(".thrillerMovies")
+var dramaInput = document.querySelector(".dramaMovies")
+var westernInput = document.querySelector(".westernMovies")
+var adventureInput = document.querySelector(".adventureMovies")
+var musicalInput = document.querySelector(".musicalMovies")
 
-let horrorInput = document.querySelector(".horrorMovies")
-let button = document.querySelector("#startbtn")
+// submit button
+var button = document.querySelector("#startbtn")
 console.log(actionInput)
 console.log(animeInput)
 console.log(comedyInput)
 console.log(documentaryInput)
 console.log(sciFiInput)
 console.log(horrorInput)
-// action.textContent="action"
+console.log(thrillerInput)
+console.log(dramaInput)
+console.log(westernInput)
+console.log(adventureInput)
+console.log(musicalInput)
 
-//TWo dropdowns Comedy and 2012
-//ON submit form event-> htpp://apiwatchmode/ + geredropwdown + & + yeardropdwon + "apikey"
 
-function getAPI(){
-  fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y')
-  .then(function (response){
+
+
+
+
+function getStreaming(title, titleId) {
+  fetch(`https://api.watchmode.com/v1/title/${titleId}/sources/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y`)
+  .then(function(response) {
     return response.json()
-    
-  }).then(function(data){
+  })
+  .then(function(data) {
     console.log(data)
+    const card = document.createElement('div')
+        card.classList.add('tinder--card')
+        const movieImage = document.createElement('img')
+        movieImage.setAttribute('src','./assets/img/team-7-action.webp')
+        const h3 = document.createElement('h3')
+        h3.textContent= title
+        const sub= document.createElement('p')
+        sub.textContent = 'Available on: '
+        data.forEach(function(item){
+          let p = document.createElement('p')
+          p.textContent= item.name
+          sub.appendChild(p)
+        })
 
-})
-// j
+        card.appendChild(movieImage)
+        card.appendChild(h3)
+        card.appendChild(sub)
+        allCards.appendChild(card)
+  })
 }
-// function to get titles from selected genre
+// gives list of all movies and genres
+function getAPI(data) {
+  fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=${data}&limit=5`)
+    .then(function (response) {
+      return response.json()
 
-function getTitles(){
-  fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=')
-  .then(function (response){
-    return response.json()
-    
-  }).then(function(data){
-    console.log(data)
+    }).then(function (data) {
+      console.log(data)
+      data.titles.forEach(function(title){
+          getStreaming(title.title, title.id)
+      })
 
-})
+     // initCards();
+      console.log(data.titles[1].title)
+      console.log(data.titles)
+    })
+
 }
 
-    // action.textContent=data[0].name
-    
-    // anime.textContent=data[5].name
-    
-    // comedy.textContent=data[7].name
-   
-    // documentary.textContent=data[9].name
-    
-    // scienceFiction.textContent=data[26].name
-    
-    // horror.textContent=data[10].name
-    
-  // }
-  
-getAPI()
-
-// get options on toggle board-----------------v
-// var genOptions = document.createElement("span")
 
 
-// --------------------------------------^
+
+
+
 function initCards(card, index) {
+
   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 
   newCards.forEach(function (card, index) {
-    card.style.zIndex = allCards.length - index;
+    card.style.zIndex = cardDivs.length - index;
     card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
     card.style.opacity = (10 - index) / 10;
   });
-  
-  tinderContainer.classList.add('loaded');
 }
 
-initCards();
+  tinderContainer.classList.add('loaded');
 
-allCards.forEach(function (el) {
+
+
+
+cardDivs.forEach(function (el) {
   var hammertime = new Hammer(el);
 
   hammertime.on('pan', function (event) {
@@ -178,29 +219,50 @@ var loveListener = createButtonListener(true);
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
 
-// button.addEventListener('click',(e) => {
-// actionInput.setAttribute('checked') 
-// animeInput.setAttribute('checked') 
-// comedyInput.setAttribute('checked') 
-// documentaryInput.setAttribute('checked') 
-// sciFiInput.setAttribute('checked') 
-// horrorInput.setAttribute('checked') 
-// console.log(actionInput)
-// console.log(animeInput)
-// console.log(comedyInput)
-// console.log(documentaryInput)
-// console.log(sciFiInput)
-// console.log(horrorInput)
- 
 
-// })
-function handleFormSubmit(event){
-  console.log(event.target)
+
+
+
+
+// hide function
+function togglehide(){
+  if(swipeCards.style.display==="none"){
+    swipeCards.style.display = "block"
+  
+  }
+  
+ console.log("is this working?")
+};
+
+
+
+
+
+
+// moves from form to page with cards
+function handleFormSubmit(event) {
+
+console.log('is this working?')
+  // window.location.href='./cards.html'
+  
 }
 
+// setup local storage for 'loved' movies
+localStorage.setItem('love',love)
+console.log(localStorage.getItem('love'))
+
+// document.getElementById('genre-form').addEventListener('submit',handleFormSubmit)
+genreForm.addEventListener('submit',function(event){
+ event.preventDefault()
+ 
+  console.log(genres.value)
+  let genre = genres.value
+  getAPI(genre)
+  console.log('is this working?') 
+  togglehide();
+}
+
+);
+console.log(genreForm)
 
 
-
-
-// actionInput.setAttribute('checked',true) 
-console.log(actionInput)

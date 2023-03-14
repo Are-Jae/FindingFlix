@@ -66,3 +66,9 @@ body {
       display: block;
     }
   }
+  .swipe{
+    display: none !important;
+  }
+  .tinder{
+    display: none !important;
+  }
