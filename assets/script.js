@@ -2,7 +2,8 @@
 'use strict';
 
 var tinderContainer = document.querySelector('.tinder');
-var allCards = document.querySelectorAll('.tinder--card');
+var allCards = document.querySelector('.tinder--cards');
+var cardDivs = document.querySelectorAll('.tinder--cards');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
 var apiKey = 'y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y'
@@ -11,7 +12,8 @@ var submit = document.querySelector("#startbtn")
 var genreForm = document.getElementById("genre-form")
 var genreBox = document.getElementById("genre-box")
 var swipeCards = document.querySelector('.swipe')
-
+var select = document.getElementById("genres")
+let movies = []
 
 // selection
 var action = document.querySelector(".action")
@@ -68,63 +70,68 @@ console.log(westernInput)
 console.log(adventureInput)
 console.log(musicalInput)
 
-// action.textContent="action"
 
 
 
-// gets genre list https://api.watchmode.com/v1/genres/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y
 
+
+function getStreaming(title, titleId) {
+  fetch(`https://api.watchmode.com/v1/title/${titleId}/sources/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y`)
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(data) {
+    console.log(data)
+    const card = document.createElement('div')
+        card.classList.add('tinder--card')
+        const movieImage = document.createElement('img')
+        movieImage.setAttribute('src','./assets/img/team-7-action.webp')
+        const h3 = document.createElement('h3')
+        h3.textContent= title
+        const sub= document.createElement('p')
+        sub.textContent = 'Available on: '
+        data.forEach(function(item){
+          let p = document.createElement('p')
+          p.textContent= item.name
+          sub.appendChild(p)
+        })
+
+        card.appendChild(movieImage)
+        card.appendChild(h3)
+        card.appendChild(sub)
+        allCards.appendChild(card)
+  })
+}
 // gives list of all movies and genres
 function getAPI(data) {
-  fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=${data}`)
+  fetch(`https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=${data}&limit=5`)
     .then(function (response) {
       return response.json()
 
     }).then(function (data) {
       console.log(data)
+      data.titles.forEach(function(title){
+          getStreaming(title.title, title.id)
+      })
 
+     // initCards();
+      console.log(data.titles[1].title)
+      console.log(data.titles)
     })
 
 }
-// function to get titles from selected genre
-
-// function getTitles(){
-//   fetch('https://api.watchmode.com/v1/list-titles/?apiKey=y4NfAsZoZ844MeF86OxedvbR4KclKduLv7jUZL1y&genres=')
-//   .then(function (response){
-//     return response.json()
-
-//   }).then(function(data){
-//     console.log(data)
-
-// })
-// }
-
-// action.textContent=data[0].name
-
-// anime.textContent=data[5].name
-
-// comedy.textContent=data[7].name
-
-// documentary.textContent=data[9].name
-
-// scienceFiction.textContent=data[26].name
-
-// horror.textContent=data[10].name
-
-// }
-
-// getAPI()
-
-// get options on toggle board-----------------v
-// var genOptions = document.createElement("span")
 
 
-// --------------------------------------^
+
+
+
+
 function initCards(card, index) {
+
   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 
   newCards.forEach(function (card, index) {
-    card.style.zIndex = allCards.length - index;
+    card.style.zIndex = cardDivs.length - index;
     card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
     card.style.opacity = (10 - index) / 10;
   });
@@ -133,9 +140,9 @@ function initCards(card, index) {
   tinderContainer.classList.add('loaded');
 
 
-initCards();
 
-allCards.forEach(function (el) {
+
+cardDivs.forEach(function (el) {
   var hammertime = new Hammer(el);
 
   hammertime.on('pan', function (event) {
@@ -212,49 +219,30 @@ var loveListener = createButtonListener(true);
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
 
-// button.addEventListener('click',(e) => {
-// actionInput.setAttribute('checked') 
-// animeInput.setAttribute('checked') 
-// comedyInput.setAttribute('checked') 
-// documentaryInput.setAttribute('checked') 
-// sciFiInput.setAttribute('checked') 
-// horrorInput.setAttribute('checked') 
-// console.log(actionInput)
-// console.log(animeInput)
-// console.log(comedyInput)
-// console.log(documentaryInput)
-// console.log(sciFiInput)
-// console.log(horrorInput)
 
 
-// })
 
-// hide cards on load
-function hide(variable){
-  variable.style = 'display: none;'
+
+
+// hide function
+function togglehide(){
+  if(swipeCards.style.display==="none"){
+    swipeCards.style.display = "block"
+  
+  }
+  
+ console.log("is this working?")
 };
 
-// show cards on submit
-function show(variable){
-  variable.style = '';
-}
 
-function startScreen(){
 
-hide(swipeCards)
-hide(genreBox)
-}
 
-// function startSwipe(){
-//   show(swipeCards)
-// }
+
 
 // moves from form to page with cards
 function handleFormSubmit(event) {
-  event.preventDefault()
-  console.log(event.target.action.split('='))
-  var genre = event.target.action.split('=')[1]
-  getAPI(genre)
+
+console.log('is this working?')
   // window.location.href='./cards.html'
   
 }
@@ -263,6 +251,18 @@ function handleFormSubmit(event) {
 localStorage.setItem('love',love)
 console.log(localStorage.getItem('love'))
 
-genreForm.addEventListener('submit',handleFormSubmit)
-genreBox.addEventListener('submit',startScreen)
-swipeCards.addEventListener('submit',show)
+// document.getElementById('genre-form').addEventListener('submit',handleFormSubmit)
+genreForm.addEventListener('submit',function(event){
+ event.preventDefault()
+ 
+  console.log(genres.value)
+  let genre = genres.value
+  getAPI(genre)
+  console.log('is this working?') 
+  togglehide();
+}
+
+);
+console.log(genreForm)
+
+
