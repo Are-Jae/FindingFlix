@@ -34,17 +34,17 @@ Aimed usuage is to assist users in finding a new movie to watch, and where they 
 ## Credits
 
 Collaborators on this project include:
-[Brett Vanhoose:](https://github.com/m-vanhoose)
-[Eric Jacob:](https://github.com/EricJacob99)
-[Janiece Lewis:](https://github.com/Janiece-Lewis) 
-[Abdiaziz Aden:](https://github.com/AzizAden)
-[Raven Evans:](http://github.com/are-jae)
-[Madi Schneider:](https://github.com/madischneider3)
+[Brett Vanhoose, ](https://github.com/m-vanhoose)
+[Eric Jacob, ](https://github.com/EricJacob99)
+[Janiece Lewis, ](https://github.com/Janiece-Lewis) 
+[Abdiaziz Aden, ](https://github.com/AzizAden)
+[Raven Evans, ](http://github.com/are-jae)
+[Madi Schneider.](https://github.com/madischneider3)
 
 
 ## Badges
 
-(https://img.shields.io/badge/status-in%20development%20-blue)
+![alt text](https://img.shields.io/badge/status-in%20development%20-blue)
 
 ## Features
 Genre selection- Users are greeted with a drop down menu featuring 11 genres for selection
