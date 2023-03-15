@@ -32,16 +32,7 @@ var yes = document.getElementById("yes")
 var no = document.getElementById("no")
 var na = document.getElementById("na")
 
-// var actionOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=1'
-// var animeOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=33'
-// var comedyOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=4'
-// var documentaryOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=6'
-// var sciFiOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=15'
-// var horrorOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=11'
-// var thrillerOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=17'
-// var dramaOptions = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=7'
-// var westernOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=19'
-// var adventureOption = 'https://api.watchmode.com/v1/list-titles/?apiKey=APmEif8JXbXLZVpdykjkAzc4UqAz4VO3WujGA9Tf&genres=2'
+
 
 var actionInput = document.querySelector(".actionMovies")
 var animeInput = document.querySelector(".animeMovies")
@@ -57,10 +48,7 @@ var musicalInput = document.querySelector(".musicalMovies")
 
 var button = document.querySelector("#startbtn")
 
-// func to change background
-// function changeBackground() {
-//   if (select.option.value)
-// }
+
 
 // function gives platform of given title 
 function getStreaming(title, titleId) {
@@ -175,13 +163,15 @@ function createButtonListener(love) {
     var moveOutWidth = document.body.clientWidth * 1.5;
 
     if (!cards.length) return false;
-
+  let array = []
     var card = cards[0];
+    console.log(cards[0].children[1].innerHTML)
 
     card.classList.add('removed');
 
     if (love) {
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+      
     } else {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
     }
@@ -189,6 +179,8 @@ function createButtonListener(love) {
     initCards();
 
     event.preventDefault();
+    
+    console.log("is this the right function")
   };
 }
 
@@ -241,6 +233,8 @@ console.log(localStorage.getItem('love'))
 //     }
 //   }
 // }
+
+// get data for user to use later
 function myFunction(event){
   event.preventDefault
  let testing = document.querySelector('input[name="answer"]:checked').value;
@@ -267,10 +261,7 @@ function myFunction(event){
 //   // localStorage.setItem('Your fav genre?',' '); 
  }
 // get the info 
-localStorage.setItem('Your fav genre?',' ');
-localStorage.setItem('New here?','yes');
-localStorage.setItem('New here?','no');
-localStorage.setItem('New here?','na');
+
 
 genreForm.addEventListener('submit', function (event) {
   event.preventDefault()
